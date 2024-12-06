@@ -1,9 +1,27 @@
+'use client'
 
+import { useEffect, useState, FormEvent, useRef } from "react"
+
+import { Api } from "@/services/api";
 
 export default function Form() {
+
+    const nameRef = useRef<HTMLInputElement | null>(null);
+    const valueRef = useRef<HTMLInputElement | null>(null);
+    const amountRef = useRef<HTMLInputElement | null>(null);
+    const validityRef = useRef<HTMLInputElement | null>(null);
+    const importanceRef = useRef<HTMLInputElement | null>(null);
+
+    async function HandleSubmit(e: FormEvent) {
+        e.preventDefault();
+
+        if(!nameRef.current?.value || !valueRef.current?.value || !amountRef.current?.value) return;
+    
+    }
+
     return (
         <main className="mx-auto text-center">
-            <form action="" className="mt-8 mb-10">
+            <form action="" className="mt-8 mb-10" onSubmit={HandleSubmit}>
                 <p>
                     <label htmlFor="name" className="font-semibold text-zinc-400">Name</label> <br />
                     <input type="text" name="name" id="name" className="mb-5 p-3 rounded bg-zinc-800" placeholder="expense name"/>
